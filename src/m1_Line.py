@@ -365,7 +365,7 @@ class Line(object):
             print(line1 == line2)    # Should now print: True
         """
         # ---------------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -373,6 +373,10 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        a = self.start
+        b = self.end
+        self.start = b
+        self.end = a
 
     def slope(self):
         """
@@ -401,7 +405,7 @@ class Line(object):
           :rtype: float
         """
         # ---------------------------------------------------------------------
-        # TODO: 6.
+        # DONE: 6.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -409,6 +413,10 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        if self.end.x == self.start.x:
+            return math.inf
+        else:
+            return (self.end.y - self.start.y) / (self.end.x - self.start.x)
 
     def length(self):
         """
@@ -434,7 +442,7 @@ class Line(object):
           :rtype: float
         """
         # ---------------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -442,6 +450,7 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        return math.sqrt(((self.end.y - self.start.y) ** 2) + ((self.end.x - self.start.x) ** 2))
 
     def get_number_of_clones(self):
         """
