@@ -227,6 +227,9 @@ class Line(object):
         # ---------------------------------------------------------------------
         self.start = start.clone()
         self.end = end.clone()
+        self.start_start = start.clone()
+        self.end_start = end.clone()
+        self.clones = 0
 
     def __repr__(self):
         """
@@ -328,6 +331,7 @@ class Line(object):
           :rtype: Line
         """
         line = Line(self.start, self.end)
+        self.clones = self.clones + 1
         return line
 
         # ---------------------------------------------------------------------
@@ -482,8 +486,9 @@ class Line(object):
         Type hints:
           :rtype: int:
         """
+        return self.clones
         # ---------------------------------------------------------------------
-        # TODO: 8.
+        # DONE: 8.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -516,8 +521,14 @@ class Line(object):
           :type  other_line: Line
           :rtype: Line:
         """
+        a = self.start.x + other_line.start.x
+        b = self.start.y + other_line.start.y
+        c = self.end.x + other_line.end.x
+        d = self.end.y + other_line.end.y
+        line = Line(Point(a, b), Point(c, d))
+        return line
         # ---------------------------------------------------------------------
-        # TODO: 9.
+        # DONE: 9.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -551,7 +562,7 @@ class Line(object):
           :rtype: Line:
         """
         # ---------------------------------------------------------------------
-        # TODO: 10.
+        # DONE: 10.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -559,6 +570,12 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        a = self.start.x - other_line.start.x
+        b = self.start.y - other_line.start.y
+        c = self.end.x - other_line.end.x
+        d = self.end.y - other_line.end.y
+        line = Line(Point(a, b), Point(c, d))
+        return line
 
     def midpoint(self):
         """
@@ -577,8 +594,10 @@ class Line(object):
         Type hints:
           :rtype: Point
         """
+        p = Point((self.start.x + self.end.x) / 2, (self.start.y + self.end.y) / 2)
+        return p
         # ---------------------------------------------------------------------
-        # TODO: 11.
+        # DONE: 11.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -615,7 +634,7 @@ class Line(object):
           :rtype: bool
         """
         # ---------------------------------------------------------------------
-        # TODO: 12.
+        # DONE: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -650,6 +669,10 @@ class Line(object):
         # floating-point errors while distinguishing numbers that really
         # are different from each other.
         #######################################################################
+        if round(self.slope(), 12) == round(line2.slope(), 12):
+            return True
+        else:
+            return False
 
     def reset(self):
         """
@@ -681,7 +704,7 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # ---------------------------------------------------------------------
-        # TODO: 13.
+        # DONE: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -689,6 +712,8 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        self.start = self.start_start
+        self.end = self.end_start
 
 
 ###############################################################################
