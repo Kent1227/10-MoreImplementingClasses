@@ -22,7 +22,7 @@ def main():
 
     # run_test_simple_t()
     # run_test_set_colors()
-    run_test_move_by()
+    # run_test_move_by()
     # run_test_clone()
 
 
@@ -311,9 +311,13 @@ class CapitalT(object):
         """
         a = self.h_rect.get_center()
         t = CapitalT(a, self.v_rect.get_height(), self.h_rect.get_width(), self.v_rect.get_width())
+        t.h_rect.outline_color = self.h_rect.outline_color
+        t.h_rect.fill_color = self.h_rect.fill_color
+        t.v_rect.outline_color = self.v_rect.outline_color
+        t.v_rect.fill_color = self.v_rect.fill_color
         return t
         # ---------------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
